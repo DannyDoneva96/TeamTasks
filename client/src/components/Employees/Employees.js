@@ -1,8 +1,38 @@
 import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, } from 'swiper';
+
+import Employee from './Employee/Employee';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import './Employees.css'
+
+
 const Employees = () => {
     return (
         <div className="employees-container">
+            <Swiper
+                slidesPerView={4}
+                spaceBetween={30}
+                slidesPerGroup={1}
+                loop={true}
+                loopFillGroupWithBlank={true}
+                pagination={{
+                    clickable: true,
+                }}
+                navigation={true}
+                modules={[Pagination, Navigation]}
+                className="mySwiper"
+            >
+
+                <SwiperSlide>
+                    <Employee />
+                </SwiperSlide>
+
+
+
+            </Swiper>
             <div className="top-emp"></div>
             <div className="employee-table-container">
                 <table className="container">
