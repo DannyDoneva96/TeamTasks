@@ -1,6 +1,16 @@
-import React from 'react'
+import React ,{ useState, useEffect }from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, } from 'swiper';
+
+
+import { db } from '../../firebase'
+
+import { collection, getDocs, addDoc,updateDoc ,doc,deleteDoc} from 'firebase/firestore'
+
+
+
+
+
 
 import Employee from './Employee/Employee';
 import 'swiper/css';
@@ -10,6 +20,21 @@ import './Employees.css'
 
 
 const Employees = () => {
+    
+const empRef = collection(db, "employees"); 
+    const [employees, setEmployees] = useState([]);
+
+    useEffect(() => {
+        const getEmployees =  async () => {
+            const data = await getDocs(empRef);
+            const employees = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+            setEmployees(employees);}
+            getEmployees()
+          
+    }, []);
+
+
+
     return (
         <div className="employees-container">
             <h2 className="topEmpHeading">Our Top Employees</h2>
@@ -67,6 +92,19 @@ const Employees = () => {
                     </thead>
 
                     <tbody>
+                        {employees?
+                        employees.map((employee)=> {
+                            return (
+                              <tr>
+                                <td>{employee.fullName}</td>
+                                <td>{employee.email}</td>
+                                <td>{employee.dateOfBirth}</td>
+                                <td>{employee.phoneNumber}</td>
+                                <td>{employee.monthlySalary}</td>
+                                <td>{employee.completedTasks}</td>
+                              </tr>
+                            );
+                          }) : null}
                         <tr>
                             <td>John Dan</td>
                             <td>john@john-dan.com</td>
