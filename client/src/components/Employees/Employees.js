@@ -2,7 +2,7 @@ import React from 'react'
 import './Employees.css'
 const Employees = () => {
     return (
-        <div>
+        <div className="employees-container">
             <div className="top-emp"></div>
             <div className="employee-table-container">
                 <table className="container">
@@ -76,7 +76,7 @@ const Employees = () => {
 
                     <tfoot>
                         <tr>
-                            <td colspan="3">
+                            <td colspan="6">
                                 <input type="text" id="searchField" />
                                 <button type="button" id="searchBtn">Search</button>
                             </td>
