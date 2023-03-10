@@ -1,11 +1,13 @@
 import React from 'react'
-
+import './Home.css'
 const Home = () => {
     return (
         <div className="home-container">
 
             <div className="home-get-started">
-                  <h3 className="quote"><i class="fa-solid fa-quote-left"></i>Time is the scarcest resource and <br/> unless it is managed nothing else <br/>can be managed.<i class="fa-solid fa-quote-right"></i></h3>
+                <div className="q-q-1">
+                  <h3 className="quote">"Time is the scarcest resource and <br/> unless it is managed nothing else <br/>can be managed." -Peter Drucker </h3> 
+                  <button className="get-started-btn">GET STARTED</button></div>
                 <div className="home-col-1">
                     <>
                     <h1 className="main-h">What is task manager?</h1>
@@ -21,8 +23,10 @@ const Home = () => {
                 </div>
 
             </div>
+
             <div className="home-topEmployee">
                 <img src={require('../../assets/images/top-5-removebg-preview.png')} alt="" />
+                <h2 className="home-h2">Top Five Employees</h2>
                 <p className='desc-employee-home'>Our top 5 employees are the backbone of our company and have demonstrated their exceptional abilities by completing the most tasks in the company. They consistently go above and beyond to achieve outstanding results, demonstrating a strong work ethic and exceptional skills in their respective fields. Their dedication and commitment to their work has made them valuable assets to our team, and they have shown their ability to lead, inspire and motivate their colleagues. They possess outstanding communication skills and are always willing to lend a helping hand. Their contributions to our company have been instrumental in our success, and we are proud to have them on our team."</p>
                  <p>See our top <a href="/employee">employees</a>or become one of them <button><a href="/taskManager">Get Started</a></button></p>
             </div>
