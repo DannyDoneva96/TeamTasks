@@ -12,14 +12,62 @@
 }
 
 .container-btn {
-    text-align: right;
+    text-align: center;
 }
 
 .get-started-btn {
-
-
+    background-color: var(--medium-purp);
+    color: #fff;
+   
+    border-color: var(--medium-purp);
     border-radius: 2rem;
     padding: 0.5rem;
-    margin: 0rem 3rem;
+    margin: 1rem 3rem;
 
 }
+.get-started-btn:hover  {
+ background-color: #fff;
+  color:var(--medium-purp);
+}
+.home-col-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:4rem
+
+}
+
+.main-h{
+    font-size: 2rem;
+    padding: 1rem;
+    text-align: center;
+
+}
+.des{text-align: center;
+width: 40%;}
+
+.main-p{
+    background-color: #e7e7e7;
+    border-radius: 1rem;
+    text-align: center;
+    padding: 1rem 3rem;
+}
+.home-col-emp{    display: flex;
+    align-items: center;}
+
+    .get-st-btn{
+        background-color: #fff;
+        color:var(--medium-purp);
+          border-color: var(--medium-purp);
+          border-radius: 2rem;
+          padding: 0.5rem;
+          margin: 0rem 0.1rem;
+    }
+    .get-st-btn:hover{
+        background-color:var(--medium-purp);
+        color: #fff;
+          border-color: var(--medium-purp);
+    }
+    .ank-home:hover{
+        color: #fff;
+    }

@@ -1,21 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
 
-.header-container{
-    height:2rem;
+.header-container {
+    height: 2rem;
     display: flex;
     justify-content: space-between;
-    margin: 1rem 3rem ;
+    margin: 1rem 3rem;
 
 }
-.header-container img{
-    width:13rem
+
+.header-container img {
+    width: 13rem
 }
 
-.header-options{
-    gap: 1rem;
+.header-options {
+    gap: 2rem;
     display: flex;
 }
 
-.main-h,.home-h2{
-font-family: 'Prata', serif;
+.main-h,
+.home-h2 {
+    font-family: 'Prata', serif;
+}
+
+.header-options li {
+    font-size: 1.5rem;
+    color: var(--dark-purp);
+    text-decoration: underline;
+    font-weight: bold
+}
+
+.header-options li:hover {
+    color: var(--medium-purp);
+    font-size: 1.7rem;
+    font-weight: bold
 }
