@@ -12,6 +12,7 @@ import './Employees.css'
 const Employees = () => {
     return (
         <div className="employees-container">
+            <h2 className="topEmpHeading">Our Top Employees</h2>
             <Swiper
                 slidesPerView={4}
                 spaceBetween={20}
