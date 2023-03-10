@@ -1,4 +1,5 @@
 import React from 'react'
+import './Emloyee.css'
 
 const Employee = () => {
   return (
@@ -18,7 +19,7 @@ const Employee = () => {
                         <div className="name-prof">
                             <span className="nameW">Daniela</span>
                             <span className="prof">Web Developer </span>
-                            <p className="something">desc</p>
+                            <p className="desc-topEmp">desc</p>
                         </div>
 
                         <div className="btnW">

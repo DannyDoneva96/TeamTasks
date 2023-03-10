@@ -14,7 +14,7 @@ const Employees = () => {
         <div className="employees-container">
             <Swiper
                 slidesPerView={4}
-                spaceBetween={30}
+                spaceBetween={20}
                 slidesPerGroup={1}
                 loop={true}
                 loopFillGroupWithBlank={true}
@@ -23,12 +23,29 @@ const Employees = () => {
                 }}
                 navigation={true}
                 modules={[Pagination, Navigation]}
-                className="mySwiper"
+                className="mySwiper ddd"
             >
 
                 <SwiperSlide>
                     <Employee />
                 </SwiperSlide>
+
+                <SwiperSlide>
+                    <Employee />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <Employee />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <Employee />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <Employee />
+                </SwiperSlide>
+
 
 
 
@@ -106,7 +123,7 @@ const Employees = () => {
 
                     <tfoot>
                         <tr>
-                            <td colspan="6">
+                            <td colSpan="6">
                                 <input type="text" id="searchField" />
                                 <button type="button" id="searchBtn">Search</button>
                             </td>
