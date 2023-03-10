@@ -1,29 +1,23 @@
 import React ,{ useState, useEffect }from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, } from 'swiper';
-
-
 import { db } from '../../firebase'
-
 import { collection, getDocs, addDoc,updateDoc ,doc,deleteDoc} from 'firebase/firestore'
-
-
-
-
-
-
 import Employee from './Employee/Employee';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './Employees.css'
 import { nanoid } from '@reduxjs/toolkit';
+import Modal from './Modal/Modal';
 
 
 const Employees = () => {
 
 const empRef = collection(db, "employees"); 
     const [employees, setEmployees] = useState([]);
+    const [show, setShow] = useState(false)
+
 
     useEffect(() => {
         const getEmployees =  async () => {
@@ -34,11 +28,19 @@ const empRef = collection(db, "employees");
           
     }, []);
 
+    const addEmployee = async (employee) => {
+        await addDoc(empRef, employee)
+    }
 
 
     return (
         <div className="employees-container">
             <h2 className="topEmpHeading">Our Top Employees</h2>
+            <div className="emp-add">
+            <button onClick={()=>setShow(true)}  className="get-started-btn">+Add</button>
+
+                <Modal onClose={() => setShow(false)} show={show} addEmployee={addEmployee}/>
+          
             <Swiper
                 slidesPerView={4}
                 spaceBetween={20}
@@ -52,6 +54,7 @@ const empRef = collection(db, "employees");
                 modules={[Pagination, Navigation]}
                 className="mySwiper ddd"
             >
+
 
                   {employees
                        ? employees.map((employee) => {
@@ -70,6 +73,7 @@ const empRef = collection(db, "employees");
 
 
             </Swiper>
+              </div>
             <div className="top-emp"></div>
             <div className="employee-table-container">
                 <table className="container">
