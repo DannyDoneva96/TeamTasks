@@ -1,12 +1,25 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap');
 
-.quote{
-font-family: 'Dancing Script', cursive;
-font-size: 2rem;
+.quote {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
 }
 
-.home-container{
+
+.home-container {
     margin: 3rem;
+
+}
+
+.container-btn {
+    text-align: right;
+}
+
+.get-started-btn {
+
+
+    border-radius: 2rem;
+    padding: 0.5rem;
+    margin: 0rem 3rem;
 
 }

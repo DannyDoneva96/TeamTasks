@@ -6,8 +6,9 @@ const Home = () => {
 
             <div className="home-get-started">
                 <div className="q-q-1">
-                  <h3 className="quote">"Time is the scarcest resource and <br/> unless it is managed nothing else <br/>can be managed." -Peter Drucker </h3> 
-                  <button className="get-started-btn">GET STARTED</button></div>
+                  <h3 className="quote">"Time is the scarcest resource and  unless it is managed nothing else <br/>can be managed." -Peter Drucker </h3> 
+                  <div className='container-btn'>
+                  <button className="get-started-btn">GET STARTED</button></div></div>
                 <div className="home-col-1">
                     <>
                     <h1 className="main-h">What is task manager?</h1>
