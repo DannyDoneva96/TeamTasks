@@ -1,7 +1,7 @@
 import React from 'react'
 import './Emloyee.css'
 
-const Employee = () => {
+const Employee = ({employee}) => {
   return (
     <section>
         <div className="swiper mySwiper containerWishes">
@@ -9,7 +9,7 @@ const Employee = () => {
                 <div className="swiper-slide card">
                     <div className="card-content">
                         <div className="imageW">
-                            <img src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80' alt="photo1" />
+                            <img src={employee.imageUrl} alt="photo1" />
                         </div>
                         <div className="media-icons">
 
@@ -17,9 +17,9 @@ const Employee = () => {
 
                         </div>
                         <div className="name-prof">
-                            <span className="nameW">Daniela</span>
-                            <span className="prof">Web Developer </span>
-                            <p className="desc-topEmp">desc</p>
+                            <span className="nameW">{employee.fullName}</span>
+                            <span className="prof">{employee.position}</span>
+                            <p className="desc-topEmp">Completed Tasks: {employee.completedTasks}</p>
                         </div>
 
                         <div className="btnW">

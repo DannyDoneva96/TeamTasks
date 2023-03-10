@@ -17,10 +17,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './Employees.css'
+import { nanoid } from '@reduxjs/toolkit';
 
 
 const Employees = () => {
-    
+
 const empRef = collection(db, "employees"); 
     const [employees, setEmployees] = useState([]);
 
@@ -52,25 +53,18 @@ const empRef = collection(db, "employees");
                 className="mySwiper ddd"
             >
 
-                <SwiperSlide>
-                    <Employee />
-                </SwiperSlide>
+                  {employees
+                       ? employees.map((employee) => {
+                        return(
+                            <SwiperSlide>
+                                <Employee key={nanoid()} employee={employee}/>
+                            </SwiperSlide>
+                            );
+                          }) : <p>No employees found.</p>}
 
-                <SwiperSlide>
+                {/* <SwiperSlide>
                     <Employee />
-                </SwiperSlide>
-
-                <SwiperSlide>
-                    <Employee />
-                </SwiperSlide>
-
-                <SwiperSlide>
-                    <Employee />
-                </SwiperSlide>
-
-                <SwiperSlide>
-                    <Employee />
-                </SwiperSlide>
+                </SwiperSlide> */}
 
 
 
