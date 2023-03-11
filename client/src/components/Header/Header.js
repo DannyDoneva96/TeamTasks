@@ -1,5 +1,7 @@
 import React from 'react'
 import './Header.css'
+import { Link } from 'react-router-dom';
+
 const Header = () => {
     const user = true;
   return (
@@ -7,8 +9,8 @@ const Header = () => {
         <img src={require('../../assets/images/Task Manager.png')} alt="" />
        
          <ul className='header-options'> 
-            <li>Tasks</li>
-            <li>Employees</li>
+            <Link to="/taskManager" ><li> Tasks</li></Link>
+            <Link to="/employees" ><li>Employees</li></Link>
          </ul>
         
 

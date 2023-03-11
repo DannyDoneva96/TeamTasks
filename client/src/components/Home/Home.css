@@ -52,8 +52,12 @@ width: 40%;}
     text-align: center;
     padding: 1rem 3rem;
 }
-.home-col-emp{    display: flex;
-    align-items: center;}
+.home-col-emp{  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:4rem
+}
 
     .get-st-btn{
         background-color: #fff;
@@ -70,4 +74,7 @@ width: 40%;}
     }
     .ank-home:hover{
         color: #fff;
+    }
+    .desc-employee-home{
+        width: 40%;
     }

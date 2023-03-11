@@ -33,6 +33,19 @@ const Employees = () => {
 
     const addEmployee = async (employee) => {
         await addDoc(empRef, employee)
+        setEmployees([...employees, employee]);
+    }
+    const deleteEmployee = async(id) =>{
+        const empDoc = doc(db, "employees",id); 
+         await deleteDoc(empDoc);
+         // remove from the state
+         setEmployees(prevState => prevState.filter(emp => emp.id !== id));
+
+      }
+      const updateEmployee= async (id, empData) => {
+        const EmpDoc = doc(db, "employee",id);
+        const newData = empData
+        await updateDoc(EmpDoc, newData)
     }
 
     useEffect(() => {
@@ -51,7 +64,7 @@ const Employees = () => {
         <div className="employees-container">
             <h2 className="topEmpHeading">Our Top Employees</h2>
             <div className="emp-add">
-                <button onClick={() => setShow(true)} className="get-started-btn">+Add</button>
+                <button onClick={() => setShow(true)} className="addBtn">+Add Employee</button>
 
                 <Modal onClose={() => setShow(false)} show={show} addEmployee={addEmployee} />
 
@@ -74,7 +87,7 @@ const Employees = () => {
                         ? topEmployees.map((employee) => {
                             return (
                                 <SwiperSlide>
-                                    <Employee key={nanoid()} employee={employee} />
+                                    <Employee key={nanoid()} deleteEmployee={deleteEmployee} updateEmployee={updateEmployee} employee={employee} />
                                 </SwiperSlide>
                             );
                         }) : <p>No employees found.</p>}
@@ -117,6 +130,8 @@ const Employees = () => {
                                         <td>{employee.phoneNumber}</td>
                                         <td>{employee.monthlySalary}</td>
                                         <td>{employee.completedTasks}</td>
+                                        <td><button className='addBtn' onClick={() => { deleteEmployee(employee.id) }}  >Delete</button></td>
+
                                     </tr>
                                 ); })
 

@@ -32,7 +32,7 @@ const Home = () => {
                 <div className="home-col-emp">
                 <img src={require('../../assets/images/top-5-removebg-preview.png')} alt="" />
                 
-                <p className='desc-employee-home main-p'>Our top 5 employees are the backbone of our company and have demonstrated their exceptional abilities by completing the most tasks in the company.<br/> They consistently go above and beyond to achieve outstanding results, demonstrating a strong work ethic and exceptional skills in their respective fields. Their dedication and commitment to their work has made them valuable assets to our team, and they have shown their ability to lead, inspire and motivate their colleagues.<br/> We are proud to have them on our team."</p>
+                <p className='desc-employee-home main-p' >Our top 5 employees are the backbone of our company and have demonstrated their exceptional abilities by completing the most tasks in the company.<br/> They consistently go above and beyond to achieve outstanding results, demonstrating a strong work ethic and exceptional skills in their respective fields. Their dedication and commitment to their work has made them valuable assets to our team, and they have shown their ability to lead, inspire and motivate their colleagues.<br/> We are proud to have them on our team."</p>
                  </div>
                  <p style={{textAlign:'center', fontSize:'2rem'}}>See our top <a style={{color:' #b968c5'}} href="/employees">employees</a> or become one of them <button className='get-st-btn' ><a className='ank-home' href="/taskManager">Get Started</a></button></p>
             </div>

@@ -1,7 +1,9 @@
-import React from 'react'
+import React ,{useState}from 'react'
 import './Emloyee.css'
+import EditModal from '../Modal/EditModal'
+const Employee = ({employee,deleteEmployee,updateEmployee}) => {
+    const [show, setShow] = useState(false)
 
-const Employee = ({employee}) => {
   return (
     <section>
         <div className="swiper mySwiper containerWishes">
@@ -23,8 +25,9 @@ const Employee = ({employee}) => {
                         </div>
 
                         <div className="btnW">
-                        <button   className="btnWishEdit">Edit</button>
-                            <button  className="btnWishDel">Delete</button>
+                        <button onClick={() => setShow(true)}  className="btnWishEdit">Edit</button>
+                        <EditModal  show={show} updateEmployee={updateEmployee} employee={employee}/>
+                            <button  className="btnWishDel" onClick={() => { deleteEmployee(employee.id) }} >Delete</button>
 
                         </div>
                     </div>
