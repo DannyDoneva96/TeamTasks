@@ -19,6 +19,9 @@ const TaskManager = () => {
                     <h3>To Do</h3>
                     <div className="to-do">
                         <Tasks/>
+                        <Tasks/>
+                        <Tasks/>
+                        <Tasks/>
                         </div>
                 </div>
                 <div className="column-tasks">

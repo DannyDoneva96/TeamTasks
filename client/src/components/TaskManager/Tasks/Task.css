@@ -1,6 +1,37 @@
 .to-do-cont{
+    
     width:90%;
     margin:auto;
     text-align: center;
-    
+    background-color: rgba(208, 208, 208, 0.415);
+}
+.cont-task-s{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.6rem 0.3rem 0.3rem 0.6rem;
+    padding-top: 1rem;
+    border-bottom: 1px solid grey;
+}
+.title-task{
+    font-weight: bold;
+    font-size:1.3rem;
+
+}
+.icons-task{
+    display: flex;
+    gap: 0.6rem;
+}
+
+.second-part{
+    flex-direction: column;
+    padding: 0.8rem;
+    display: flex;
+    gap: 0.3rem;
+}
+.status{background-color: var(--medium-purp);
+    color: #fff;
+    border-color: var(--medium-purp);
+    border-radius: 2rem;
+    padding: 0.2rem;
 }
