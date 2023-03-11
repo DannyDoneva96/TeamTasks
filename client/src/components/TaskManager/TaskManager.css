@@ -28,3 +28,27 @@
   background-color: #fff;
   color:var(--medium-purp) ;
 }
+.container-task-manager{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.column-tasks{
+  background-color: rgb(255, 255, 255);
+  height: 70vh;
+  width: 20%;
+  border-radius: 2rem;
+  -webkit-box-shadow: 0px 0px 38px -1px rgba(103, 14, 130, 0.58);
+-moz-box-shadow: 0px 0px 38px -1px rgba(0, 0, 0, 0.58);
+box-shadow: 0px 0px 38px -1px rgba(80, 14, 93, 0.58);
+}
+.column-tasks h3{
+  font-size: 1.5rem;
+  text-align: center;
+  padding-top: 0.3rem;
+  border-bottom: 1px solid grey;
+  
+}
