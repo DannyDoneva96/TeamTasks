@@ -53,42 +53,42 @@ const Modal = (props) => {
                     <h4 className="modal-title"> Edit employee </h4>
                     <div className="">
                         <i className="fas fa-user"></i>
-                        <label for="name">Full Name</label>
+                        <label htmlFor="name">Full Name</label>
                         <input type="text" placeholder="Name" name="fullName" onChange={onChange} value={props.employee.fullName}></input>
                         <span className="bar"></span>
 
                     </div>
                     <div className="">
                         <i className="fas fa-user"></i>
-                        <label for="dateOfBirth">Date of Birth</label>
+                        <label htmlFor="dateOfBirth">Date of Birth</label>
                         <input type="text" placeholder="dd/mm/yy" name="dateOfBirth" onChange={onChange} value={props.employee.dateOfBirth}></input>
                         <span className="bar"></span>
 
                     </div>
                     <div className="">
                         <i className="fas fa-user"></i>
-                        <label for="phoneNumber">Phone Number</label>
+                        <label htmlFor="phoneNumber">Phone Number</label>
                         <input type="text" name="phoneNumber" onChange={onChange} value={props.employee.phoneNumber}></input>
                         <span className="bar"></span>
 
                     </div>
                     <div className="">
                         <i className="fas fa-user"></i>
-                        <label for="email">Email</label>
+                        <label htmlFor="email">Email</label>
                         <input type="text" placeholder="email" name="email" onChange={onChange} value={props.employee.email}></input>
                         <span className="bar"></span>
 
                     </div>
                     <div className="">
                         <i className="fas fa-user"></i>
-                        <label for="imageUrl">Image url</label>
+                        <label htmlFor="imageUrl">Image url</label>
                         <input type="text" placeholder="imageUrl" name="imageUrl" onChange={onChange} value={props.employee.imageUrl}></input>
                         <span className="bar"></span>
 
                     </div>
                     <div className="">
                         <i className="fas fa-user"></i>
-                        <label for="position">Position</label>
+                        <label htmlFor="position">Position</label>
                         <input type="text" placeholder="position" name="position" onChange={onChange} value={props.employee.position}></input>
                         <span className="bar"></span>
 
@@ -97,7 +97,7 @@ const Modal = (props) => {
 
                     <div className="">
                         <i className="fas fa-user"></i>
-                        <label for="monthlySalary">Monthly Salary</label>
+                        <label htmlFor="monthlySalary">Monthly Salary</label>
                         <input type="text" name="monthlySalary" onChange={onChange} value={props.employee.monthlySalary}></input>
                         <span className="bar"></span>
 

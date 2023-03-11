@@ -55,4 +55,6 @@ overflow-y:scroll;
   
 }
 
-
+.column-tasks::-webkit-scrollbar{
+  display: none;
+}
