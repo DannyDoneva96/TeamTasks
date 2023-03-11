@@ -128,3 +128,6 @@
     background-color:var(--medium-purp) ;
     color: #fff;
 }
+.td-btn{
+    display: flex;
+}

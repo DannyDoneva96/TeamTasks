@@ -45,9 +45,9 @@ const Employees = () => {
 
     }
     const updateEmployee = async (id, empData) => {
-        const EmpDoc = doc(db, "employee", id);
+        const empDoc = doc(db, "employees", id);
         const newData = empData
-        await updateDoc(EmpDoc, newData)
+        await updateDoc(empDoc, newData)
     }
 
     useEffect(() => {
@@ -125,14 +125,14 @@ const Employees = () => {
 
                             filteredEmployees.map((employee) => {
                                 return (
-                                    <tr>
+                                    <tr key={nanoid()}>
                                         <td>{employee.fullName}</td>
                                         <td>{employee.email}</td>
                                         <td>{employee.dateOfBirth}</td>
                                         <td>{employee.phoneNumber}</td>
                                         <td>{employee.monthlySalary}</td>
                                         <td>{employee.completedTasks}</td>
-                                        <td>
+                                        <td className="td-btn">
                                             <button style={!showEdit ? { display: 'block' } : { display: 'none' }} 
                                             className='addBtn' onClick={() => {
                                                 setSelectedEmployeeId(employee.id);
@@ -160,7 +160,7 @@ const Employees = () => {
 
                             : employees.map((employee) => {
                                 return (
-                                    <tr>
+                                    <tr key={nanoid()} >
                                         <td>{employee.fullName}</td>
                                         <td>{employee.email}</td>
                                         <td>{employee.dateOfBirth}</td>
