@@ -1,8 +1,6 @@
-import React ,{useState}from 'react'
+import React from 'react'
 import './Emloyee.css'
-import EditModal from '../Modal/EditModal'
-const Employee = ({employee,deleteEmployee,updateEmployee}) => {
-    const [show, setShow] = useState(false)
+const Employee = ({employee,}) => {
 
   return (
     <section>
@@ -25,9 +23,7 @@ const Employee = ({employee,deleteEmployee,updateEmployee}) => {
                         </div>
 
                         <div className="btnW">
-                        <button onClick={() => setShow(true)}  className="btnWishEdit">Edit</button>
-                        <EditModal  show={show} updateEmployee={updateEmployee} employee={employee}/>
-                            <button  className="btnWishDel" onClick={() => { deleteEmployee(employee.id) }} >Delete</button>
+                       
 
                         </div>
                     </div>

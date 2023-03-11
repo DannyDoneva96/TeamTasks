@@ -30,7 +30,7 @@ const TaskManager = () => {
 
     const addTask = async (task) => {
         await addDoc(taskRef, task)
-        setTasks([...tasks, task]);
+        setTodos([...todos, task]);
     }
 
     const deleteTask = async (id) => {

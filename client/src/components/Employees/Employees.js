@@ -10,13 +10,15 @@ import 'swiper/css/pagination';
 import './Employees.css'
 import { nanoid } from '@reduxjs/toolkit';
 import Modal from './Modal/Modal';
-
+import EditModal from './Modal/EditModal';
 
 const Employees = () => {
 
     const empRef = collection(db, "employees");
     const [employees, setEmployees] = useState([]);
     const [show, setShow] = useState(false)
+    const [showEdit, setShowEdit] = useState(false)
+    const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
     const [searchInputValue, setSearchInputValue] = useState('');
     const [filteredEmployees, setFilteredEmployees] = useState([]);
 
@@ -35,15 +37,15 @@ const Employees = () => {
         await addDoc(empRef, employee)
         setEmployees([...employees, employee]);
     }
-    const deleteEmployee = async(id) =>{
-        const empDoc = doc(db, "employees",id); 
-         await deleteDoc(empDoc);
-         // remove from the state
-         setEmployees(prevState => prevState.filter(emp => emp.id !== id));
+    const deleteEmployee = async (id) => {
+        const empDoc = doc(db, "employees", id);
+        await deleteDoc(empDoc);
+        // remove from the state
+        setEmployees(prevState => prevState.filter(emp => emp.id !== id));
 
-      }
-      const updateEmployee= async (id, empData) => {
-        const EmpDoc = doc(db, "employee",id);
+    }
+    const updateEmployee = async (id, empData) => {
+        const EmpDoc = doc(db, "employee", id);
         const newData = empData
         await updateDoc(EmpDoc, newData)
     }
@@ -87,7 +89,7 @@ const Employees = () => {
                         ? topEmployees.map((employee) => {
                             return (
                                 <SwiperSlide>
-                                    <Employee key={nanoid()} deleteEmployee={deleteEmployee} updateEmployee={updateEmployee} employee={employee} />
+                                    <Employee key={nanoid()} employee={employee} />
                                 </SwiperSlide>
                             );
                         }) : <p>No employees found.</p>}
@@ -130,24 +132,45 @@ const Employees = () => {
                                         <td>{employee.phoneNumber}</td>
                                         <td>{employee.monthlySalary}</td>
                                         <td>{employee.completedTasks}</td>
-                                        <td><button className='addBtn' onClick={() => { deleteEmployee(employee.id) }}  >Delete</button></td>
+                                        <td>
+                                            <button style={!showEdit ? { display: 'block' } : { display: 'none' }} 
+                                            className='addBtn' onClick={() => {
+                                                setSelectedEmployeeId(employee.id);
+                                                setShowEdit(true);
+                                            }}>Edit</button>
+
+                                            <EditModal
+                                                onClose={() => {
+                                                    setShowEdit(false);
+                                                    setSelectedEmployeeId(null);
+                                                }}
+                                                showEdit={showEdit && selectedEmployeeId === employee.id}
+                                                updateEmployee={updateEmployee(employee.id, employee)}
+                                                employee={employee}
+                                            />
+
+                                            <button style={!showEdit ? { display: 'block' } : { display: 'none' }} 
+                                            className='addBtn' onClick={() => { deleteEmployee(employee.id) }}  >Delete</button>
+
+                                        </td>
 
                                     </tr>
-                                ); })
+                                );
+                            })
 
-                           : employees.map((employee) => {
-                                    return (
-                                        <tr>
-                                            <td>{employee.fullName}</td>
-                                            <td>{employee.email}</td>
-                                            <td>{employee.dateOfBirth}</td>
-                                            <td>{employee.phoneNumber}</td>
-                                            <td>{employee.monthlySalary}</td>
-                                            <td>{employee.completedTasks}</td>
-                                        </tr>
-                                    );
-                                })}
-                       
+                            : employees.map((employee) => {
+                                return (
+                                    <tr>
+                                        <td>{employee.fullName}</td>
+                                        <td>{employee.email}</td>
+                                        <td>{employee.dateOfBirth}</td>
+                                        <td>{employee.phoneNumber}</td>
+                                        <td>{employee.monthlySalary}</td>
+                                        <td>{employee.completedTasks}</td>
+                                    </tr>
+                                );
+                            })}
+
                     </tbody>
 
                     <tfoot>

@@ -46,7 +46,7 @@ const Modal = (props) => {
     }
 
     return (
-        <div style={props.show ? { display: 'block' } : { display: 'none' }} className="edit-container" onClick={props.onClose} >
+        <div style={props.showEdit ? { display: 'block' } : { display: 'none' }} className="edit-container" onClick={props.onClose} >
             <div className="edit-next-cont" onClick={e => e.stopPropagation()}>
 
                 <div className="edit-sec">
