@@ -1,8 +1,8 @@
-import React ,{ useState, useEffect }from 'react'
+import React, { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, } from 'swiper';
 import { db } from '../../firebase'
-import { collection, getDocs, addDoc,updateDoc ,doc,deleteDoc} from 'firebase/firestore'
+import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore'
 import Employee from './Employee/Employee';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -14,66 +14,76 @@ import Modal from './Modal/Modal';
 
 const Employees = () => {
 
-const empRef = collection(db, "employees"); 
+    const empRef = collection(db, "employees");
     const [employees, setEmployees] = useState([]);
     const [show, setShow] = useState(false)
-
+    const [searchInputValue, setSearchInputValue] = useState('');
+    const [filteredEmployees, setFilteredEmployees] = useState([]);
 
     useEffect(() => {
-        const getEmployees =  async () => {
+        const getEmployees = async () => {
             const data = await getDocs(empRef);
             const employees = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-            setEmployees(employees);}
-            getEmployees()
-          
+            setEmployees(employees);
+        }
+        getEmployees()
+
     }, []);
 
     const addEmployee = async (employee) => {
         await addDoc(empRef, employee)
     }
 
+    useEffect(() => {
+        setFilteredEmployees(
+            employees.filter((employee) =>
+                employee.fullName.toLowerCase().includes(searchInputValue.toLowerCase())
+            )
+        );
+    }, [searchInputValue, employees]);
+
 
     return (
         <div className="employees-container">
             <h2 className="topEmpHeading">Our Top Employees</h2>
             <div className="emp-add">
-            <button onClick={()=>setShow(true)}  className="get-started-btn">+Add</button>
+                <button onClick={() => setShow(true)} className="get-started-btn">+Add</button>
 
-                <Modal onClose={() => setShow(false)} show={show} addEmployee={addEmployee}/>
-          
-            <Swiper
-                slidesPerView={4}
-                spaceBetween={20}
-                slidesPerGroup={1}
-                loop={true}
-                loopFillGroupWithBlank={true}
-                pagination={{
-                    clickable: true,
-                }}
-                navigation={true}
-                modules={[Pagination, Navigation]}
-                className="mySwiper ddd"
-            >
+                <Modal onClose={() => setShow(false)} show={show} addEmployee={addEmployee} />
+
+                <Swiper
+                    slidesPerView={4}
+                    spaceBetween={20}
+                    slidesPerGroup={1}
+                    loop={true}
+                    loopFillGroupWithBlank={true}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    navigation={true}
+                    modules={[Pagination, Navigation]}
+                    className="mySwiper ddd"
+                >
 
 
-                  {employees
-                       ? employees.map((employee) => {
-                        return(
-                            <SwiperSlide>
-                                <Employee key={nanoid()} employee={employee}/>
-                            </SwiperSlide>
+                    {employees
+                        ? employees.map((employee) => {
+                            return (
+                                <SwiperSlide>
+                                    <Employee key={nanoid()} employee={employee} />
+                                </SwiperSlide>
                             );
-                          }) : <p>No employees found.</p>}
+                        }) : <p>No employees found.</p>}
 
-                {/* <SwiperSlide>
+                    {/* <SwiperSlide>
                     <Employee />
                 </SwiperSlide> */}
 
 
 
 
-            </Swiper>
-              </div>
+                </Swiper>
+            </div>
             <div className="top-emp"></div>
             <div className="employee-table-container">
                 <table className="container">
@@ -90,79 +100,42 @@ const empRef = collection(db, "employees");
                     </thead>
 
                     <tbody>
-                        {employees?
-                        employees.map((employee)=> {
-                            return (
-                              <tr>
-                                <td>{employee.fullName}</td>
-                                <td>{employee.email}</td>
-                                <td>{employee.dateOfBirth}</td>
-                                <td>{employee.phoneNumber}</td>
-                                <td>{employee.monthlySalary}</td>
-                                <td>{employee.completedTasks}</td>
-                              </tr>
-                            );
-                          }) : null}
-                        <tr>
-                            <td>John Dan</td>
-                            <td>john@john-dan.com</td>
-                            <td>01.01.2000</td>
-                            <td>01-00-2222</td>
-                            <td>1234</td>
-                            <td>3</td>
-
-                        </tr>
-                        <tr>
-                            <td>Max Peterson</td>
-                            <td>max@softuni.bg</td>
-                            <td>01.01.2000</td>
-                            <td>01-00-2222</td>
-                            <td>1234</td>
-                            <td>14</td>
 
 
+                        {filteredEmployees ?
 
-                        </tr>
-                        <tr>
-                            <td>Philip Anderson</td>
-                            <td>philip@softuni.bg</td>
-                            <td>01.01.2000</td>
-                            <td>01-00-2222</td>
-                            <td>1234</td>
-                            <td>5</td>
+                            filteredEmployees.map((employee) => {
+                                return (
+                                    <tr>
+                                        <td>{employee.fullName}</td>
+                                        <td>{employee.email}</td>
+                                        <td>{employee.dateOfBirth}</td>
+                                        <td>{employee.phoneNumber}</td>
+                                        <td>{employee.monthlySalary}</td>
+                                        <td>{employee.completedTasks}</td>
+                                    </tr>
+                                ); })
 
-
-
-                        </tr>
-                        <tr>
-                            <td>Sam Lima</td>
-                            <td>sam@gmail.com</td>
-                            <td>01.01.2000</td>
-                            <td>01-00-2222</td>
-                            <td>1234</td>
-                            <td>3</td>
-
-
-
-                        </tr>
-                        <tr>
-                            <td>Eva Longoria</td>
-                            <td>eva@gmail.com</td>
-                            <td>01.01.2000</td>
-                            <td>01-00-2222</td>
-                            <td>1234</td>
-                            <td>2</td>
-
-
-
-                        </tr>
+                           : employees.map((employee) => {
+                                    return (
+                                        <tr>
+                                            <td>{employee.fullName}</td>
+                                            <td>{employee.email}</td>
+                                            <td>{employee.dateOfBirth}</td>
+                                            <td>{employee.phoneNumber}</td>
+                                            <td>{employee.monthlySalary}</td>
+                                            <td>{employee.completedTasks}</td>
+                                        </tr>
+                                    );
+                                })}
+                       
                     </tbody>
 
                     <tfoot>
                         <tr>
                             <td colSpan="6">
-                                <input type="text" id="searchField" />
-                                <button type="button" id="searchBtn">Search</button>
+                                <input type="text" id="searchField" value={searchInputValue} onChange={(e) => setSearchInputValue(e.target.value)} />
+                                <button type="button" id="searchBtn" >Search</button>
                             </td>
                         </tr>
                     </tfoot>

@@ -67,4 +67,11 @@
     color: rgb(104, 46, 126);
     font-size: 20px;
   }
-  
+  .modal-footer{
+   
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
