@@ -35,3 +35,7 @@
     border-radius: 2rem;
     padding: 0.2rem;
 }
+.delete-task-btn{  
+      border: none;
+    background: none;
+    cursor: pointer;}
