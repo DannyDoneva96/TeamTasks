@@ -1,5 +1,6 @@
 import React from 'react'
 import './TaskManager.css'
+
 import { DragDropContext } from "react-beautiful-dnd";
 
 const TaskManager = () => {
@@ -14,7 +15,7 @@ const TaskManager = () => {
       </div>
 
       <div className="container-task-manager">
-
+             
       </div>
     </div>
   )

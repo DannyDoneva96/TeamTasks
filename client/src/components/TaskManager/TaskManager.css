@@ -1,5 +1,30 @@
 
 
 .search-field-taskM {
- 
+ height: 4rem;
+ background-color:var(--light-purp);
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
   }
+
+  .INPUT-TASKmANAGER-SEARCH{
+    
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    margin-left: 2rem;
+    margin-right: 1rem;
+  }
+
+  .newTaskAdd{
+    background-color: var(--medium-purp);
+    color: #fff;
+    border-color: var(--medium-purp);
+    border-radius: 2rem;
+    padding: 0.5rem;
+    margin-right: 2rem;
+}
+.newTaskAdd:hover{
+  background-color: #fff;
+  color:var(--medium-purp) ;
+}
