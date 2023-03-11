@@ -20,6 +20,7 @@ const Employees = () => {
     const [searchInputValue, setSearchInputValue] = useState('');
     const [filteredEmployees, setFilteredEmployees] = useState([]);
 
+
     useEffect(() => {
         const getEmployees = async () => {
             const data = await getDocs(empRef);
@@ -41,6 +42,9 @@ const Employees = () => {
             )
         );
     }, [searchInputValue, employees]);
+
+    //get the top 5
+    const topEmployees = employees.slice().sort((a, b) => b.completedTasks - a.completedTasks).slice(0, 5);
 
 
     return (
@@ -66,8 +70,8 @@ const Employees = () => {
                 >
 
 
-                    {employees
-                        ? employees.map((employee) => {
+                    {topEmployees
+                        ? topEmployees.map((employee) => {
                             return (
                                 <SwiperSlide>
                                     <Employee key={nanoid()} employee={employee} />
@@ -134,8 +138,8 @@ const Employees = () => {
                     <tfoot>
                         <tr>
                             <td colSpan="6">
-                                <input type="text" id="searchField" value={searchInputValue} onChange={(e) => setSearchInputValue(e.target.value)} />
-                                <button type="button" id="searchBtn" >Search</button>
+                                <input type="text" placeholder="Name of the employee" id="searchField" value={searchInputValue} onChange={(e) => setSearchInputValue(e.target.value)} />
+                                <button type="button" id="searchBtn" >Search </button>
                             </td>
                         </tr>
                     </tfoot>
