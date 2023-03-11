@@ -12,7 +12,9 @@ const TaskManager = () => {
     const taskRef = collection(db, "tasksManager");
 
     const [show, setShow] = useState(false)
+
     const [tasks, setTasks] = useState([])
+
     const [todos, setTodos] = useState([])
     useEffect(() => {
         const getTasks = async () => {
@@ -31,6 +33,11 @@ const TaskManager = () => {
     const addTask = async (task) => {
         await addDoc(taskRef, task)
         setTodos([...todos, task]);
+    }
+   const updateTask= async (id, taskData) => {
+        const taskDoc = doc(db, "tasksManager",id);
+        const newData = taskData
+        await updateDoc(taskDoc, newData)
     }
 
     const deleteTask = async (id) => {
@@ -60,7 +67,7 @@ const TaskManager = () => {
                         ? todos.map((task) => {
                             return (
                                 
-                                    <Tasks key={nanoid()} deleteTask={deleteTask} task={task} />
+                                    <Tasks onClose={() => setShow(false)} key={nanoid()}  updateTask={updateTask} deleteTask={deleteTask} task={task} />
                                
                             );
                         }) : <p>No Tasks found.</p>}
