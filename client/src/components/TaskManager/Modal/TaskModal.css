@@ -79,3 +79,6 @@
       color: red;
       font-weight: bold;
     }
+    .edit-form{display: flex;
+      align-items: unset;
+      justify-content: space-evenly;}

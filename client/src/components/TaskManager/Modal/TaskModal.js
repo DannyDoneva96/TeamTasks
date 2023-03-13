@@ -71,22 +71,22 @@ const Modal = (props) => {
 
                 <div className="modal-header">
                     <h4 className="modal-title"> Add new Task</h4>
-                    <div className="">
-                        <i className="fas fa-user"></i>
+                    <div className="edit-form">
+                    <i class="fa-solid fa-heading"></i>  
                         <label htmlFor="title">Title</label>
                         <input type="text" placeholder="title" name="title" onChange={onChange} value={task.title}></input>
                         <span className="bar"></span>
                         {errors.title && <p className="error">{errors.title}</p>}
                     </div>
-                    <div className="">
-                        <i className="fas fa-user"></i>
+                    <div className="edit-form">
+                    <i class="fa-solid fa-comment"></i>
                         <label htmlFor="description">Description</label>
                         <input type="text" name="description" onChange={onChange} value={task.description}></input>
                         <span className="bar"></span>
                         {errors.description && <p className="error">{errors.description}</p>}
 
                     </div>
-                    <div className="">
+                    <div className="edit-form">
                         <i className="fas fa-user"></i>
                         <label htmlFor="assignee">Assignee</label>
                         <select name="assignee" onChange={onChange} value={task.assignee}>
@@ -101,8 +101,8 @@ const Modal = (props) => {
                         {errors.assignee && <p className="error">{errors.assignee}</p>}
 
                     </div>
-                    <div className="">
-                        <i className="fas fa-user"></i>
+                    <div className="edit-form">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
                         <label htmlFor="dueDate">Due Date</label>
                         <input type="text" name="dueDate" onChange={onChange} value={task.dueDate}></input>
                         <span className="bar"></span>
