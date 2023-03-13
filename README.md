@@ -37,6 +37,7 @@ npm start or yarn start
 ## :fire: Technologies and Libraries
 
 :point_right: React.js <br />
+:point_right: Firebase is a Backend-as-a-Service (BaaS)<br />
 :point_right: Responsive CSS <br />
 :point_right: Google Fonts <br />
 :point_right: Fontawesome <br />
