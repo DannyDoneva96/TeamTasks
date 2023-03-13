@@ -9,7 +9,7 @@ const Modal = (props) => {
         description: '',
         status: 'To do',
         assignee: '',
-       dueDate:'',
+        dueDate: '',
 
     });
     const onSubmit = (e) => {
@@ -40,26 +40,33 @@ const Modal = (props) => {
                     <div className="">
                         <i className="fas fa-user"></i>
                         <label htmlFor="description">Description</label>
-                        <input type="text"  name="description" onChange={onChange} value={task.description}></input>
+                        <input type="text" name="description" onChange={onChange} value={task.description}></input>
                         <span className="bar"></span>
 
                     </div>
                     <div className="">
                         <i className="fas fa-user"></i>
                         <label htmlFor="assignee">Assignee</label>
-                        <input type="text" name="assignee" onChange={onChange} value={task.assignee}></input>
+                        <select name="assignee" onChange={onChange} value={task.assignee}>
+                            <option value="">-- select assignee --</option>
+                            {props.employees.map((employee) => (
+                                <option key={employee.id} value={employee.id}>
+                                    {employee.fullName}
+                                </option>
+                            ))}
+                        </select>
                         <span className="bar"></span>
 
                     </div>
                     <div className="">
                         <i className="fas fa-user"></i>
                         <label htmlFor="dueDate">Due Date</label>
-                        <input type="text"  name="dueDate" onChange={onChange} value={task.dueDate}></input>
+                        <input type="text" name="dueDate" onChange={onChange} value={task.dueDate}></input>
                         <span className="bar"></span>
 
                     </div>
-                   
-                    
+
+
                 </div>
                 <div className="bnbuttons ">
                     <div className="modal-footer">
