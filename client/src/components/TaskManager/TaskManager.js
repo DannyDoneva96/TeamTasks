@@ -18,6 +18,7 @@ const TaskManager = () => {
     const [done, setDone] = useState([])
     const empRef = collection(db, "employees");
     const [employees, setEmployees] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         const getEmployees = async () => {
@@ -45,13 +46,13 @@ const TaskManager = () => {
     const updateEmployee = async (employeeId) => {
         const employeeDoc = doc(db, "employees", employeeId);
         const employeeData = await getDoc(employeeDoc).then((doc) => doc.data());
-      
+
         if (employeeData) {
-          const newCompletedTasks = employeeData.completedTasks + 1;
-          const newData = { completedTasks: newCompletedTasks };
-          await updateDoc(employeeDoc, newData);
+            const newCompletedTasks = employeeData.completedTasks + 1;
+            const newData = { completedTasks: newCompletedTasks };
+            await updateDoc(employeeDoc, newData);
         }
-      };
+    };
 
     const addTask = async (task) => {
         await addDoc(taskRef, task)
@@ -97,13 +98,26 @@ const TaskManager = () => {
         setInReview(prevState => prevState.filter((t) => t.id !== id));
         setDone(prevState => prevState.filter((t) => t.id !== id));
     }
+    const handleSearch = (e) => {
 
+        setSearchTerm(e.target.value);
+    };
+
+    const filteredTasks = tasks.filter((task) => {
+        if (searchTerm) {
+          const title = task.title ? task.title.toLowerCase() : '';
+          return title.includes(searchTerm.toLowerCase());
+        } else {
+          return true;
+        }
+      });
     return (
         <div>
             <div className="search-field-taskM">
                 <input
+                    onChange={handleSearch}
                     className="INPUT-TASKmANAGER-SEARCH"
-                    placeholder='Search Tasks'
+                    placeholder='Search Tasks by title'
                 />
                 <button onClick={() => setShow(true)} className="newTaskAdd">+ Add Task</button>
                 <TaskModal onClose={() => setShow(false)} employees={employees} show={show} addTask={addTask} />
@@ -113,14 +127,23 @@ const TaskManager = () => {
                 <div className="column-tasks">
                     <h3>To Do</h3>
                     <div className="to-do">
-                        {todos
-                            ? todos.map((task) => {
-                                return (
-
+                        {searchTerm ? (
+                            filteredTasks.length > 0 ? (
+                                filteredTasks.map((task) => (
                                     <Tasks employees={employees} onClose={() => setShow(false)} key={nanoid()} updateStatus={updateStatus} updateTask={updateTask} deleteTask={deleteTask} task={task} />
-
-                                );
-                            }) : null}
+                                ))
+                            ) : (
+                                <p>No tasks found</p>
+                            )
+                        ) : (
+                            todos ? (
+                                todos.map((task) => (
+                                    <Tasks employees={employees} onClose={() => setShow(false)} key={nanoid()} updateStatus={updateStatus} updateTask={updateTask} deleteTask={deleteTask} task={task} />
+                                ))
+                            ) : (
+                                null
+                            )
+                        )}
                     </div>
                 </div>
                 <div className="column-tasks">
@@ -157,8 +180,8 @@ const TaskManager = () => {
                         {tasks.filter((task) => task.status === "done").map((task) => {
                             return (
                                 <Tasks
-                                updateEmployee={updateEmployee}
-                                employees={employees}
+                                    updateEmployee={updateEmployee}
+                                    employees={employees}
                                     setDone={setDone}
                                     onClose={() => setShow(false)}
                                     updateStatus={updateStatus}
