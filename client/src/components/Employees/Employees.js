@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, } from 'swiper';
+import SwiperCore, { Pagination, Navigation } from 'swiper/core';
+
 import { db } from '../../firebase'
 import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore'
 import Employee from './Employee/Employee';
@@ -21,7 +22,8 @@ const Employees = () => {
     const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
     const [searchInputValue, setSearchInputValue] = useState('');
     const [filteredEmployees, setFilteredEmployees] = useState([]);
-
+  
+    SwiperCore.use([Pagination, Navigation]);
 
     useEffect(() => {
         const getEmployees = async () => {
@@ -61,6 +63,23 @@ const Employees = () => {
     //get the top 5
     const topEmployees = employees.slice().sort((a, b) => b.completedTasks - a.completedTasks).slice(0, 5);
 
+    const breakpoints = {
+        // when window width is >= 640px
+        200: {
+          slidesPerView: 1,
+          spaceBetween: 20
+        },
+        // when window width is >= 768px
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 30
+        },
+        // when window width is >= 1024px
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 40
+        }
+      }
 
     return (
         <div className="employees-container">
@@ -71,8 +90,9 @@ const Employees = () => {
                 <Modal onClose={() => setShow(false)} show={show} addEmployee={addEmployee} />
 
                 <Swiper
-                    slidesPerView={4}
-                    spaceBetween={20}
+                     breakpoints={breakpoints}
+                     slidesPerView={5}
+                     spaceBetween={20}
                     slidesPerGroup={1}
                     loop={true}
                     loopFillGroupWithBlank={true}
