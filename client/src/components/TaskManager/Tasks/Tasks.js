@@ -32,7 +32,7 @@ const Tasks = (props) => {
                         alert(`${props.employees.find(employee => employee.id === props.task.assignee)?.fullName} completed new task.  ` )
 
                     }
-                }} className="status">Completed</button>
+                }} className="status">Next Stage</button>
             </div>
         </div >
     )

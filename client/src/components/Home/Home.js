@@ -8,14 +8,14 @@ const Home = () => {
 
             <div className="home-get-started">
                 <div className="q-q-1">
-                    <h3 className="quote">"Time is the scarcest resource and  unless it is managed nothing else <br />can be managed." -Peter Drucker </h3>
+                    <h3 className="quote media-quote">"Time is the scarcest resource and  unless it is managed nothing else <br />can be managed." -Peter Drucker </h3>
                 </div>
 
                 <div className="home-col-1">
-                    <Link to="/">
+                 
                         
                         <img src={require('../../assets/images/what are.png')} alt="" />
-                    </Link>                    <div className="des">
+                                       <div className="des">
                         <h1 className="main-h">What is task manager?</h1>
                         <p className="main-p">A task manager is an application that helps our company organize our work and stay focused. It helps us stay on top of our work, tackle multiple tasks, and stay organized. You can use a task manager to keep your work organized day in and day out.<div className='container-btn'>
                         <Link to="/taskManager">  <button className="get-started-btn">GET STARTED</button>  </Link> </div> </p></div>
@@ -38,7 +38,7 @@ const Home = () => {
 
                     <p className='desc-employee-home main-p' >Our top 5 employees are the backbone of our company and have demonstrated their exceptional abilities by completing the most tasks in the company.<br /> They consistently go above and beyond to achieve outstanding results, demonstrating a strong work ethic and exceptional skills in their respective fields. Their dedication and commitment to their work has made them valuable assets to our team, and they have shown their ability to lead, inspire and motivate their colleagues.<br /> We are proud to have them on our team."</p>
                 </div>
-                <p style={{ textAlign: 'center', fontSize: '2rem' }}>See our top <a style={{ color: ' #b968c5' }} href="/employees">employees</a> or become one of them <button className='get-st-btn' ><a className='ank-home' href="/taskManager">Get Started</a></button></p>
+                <p style={{ textAlign: 'center', fontSize: '2rem' }}>See our top <Link to="/" style={{ color: ' #b968c5' }} >employees</Link> or become one of them <button className='get-st-btn' ><Link to="/taskManager"  className='ank-home'>Get Started</Link></button></p>
             </div>
 
         </div>

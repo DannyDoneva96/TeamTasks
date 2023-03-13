@@ -1,34 +1,34 @@
-
-
 .search-field-taskM {
- height: 4rem;
- background-color:var(--light-purp);
- display: flex;
- justify-content: space-between;
- align-items: center;
-  }
-
-  .INPUT-TASKmANAGER-SEARCH{
-    
-    font-size: 1.5rem;
-    border-radius: 0.5rem;
-    margin-left: 2rem;
-    margin-right: 1rem;
-  }
-
-  .newTaskAdd{
-    background-color: var(--medium-purp);
-    color: #fff;
-    border-color: var(--medium-purp);
-    border-radius: 2rem;
-    padding: 0.5rem;
-    margin-right: 2rem;
+  height: 4rem;
+  background-color: var(--light-purp);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.newTaskAdd:hover{
+
+.INPUT-TASKmANAGER-SEARCH {
+
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  margin-left: 2rem;
+  margin-right: 1rem;
+}
+
+.newTaskAdd {
+  background-color: var(--medium-purp);
+  color: #fff;
+  border-color: var(--medium-purp);
+  border-radius: 2rem;
+  padding: 0.5rem;
+  margin-right: 2rem;
+}
+
+.newTaskAdd:hover {
   background-color: #fff;
-  color:var(--medium-purp) ;
+  color: var(--medium-purp);
 }
-.container-task-manager{
+
+.container-task-manager {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
@@ -36,25 +36,51 @@
   margin-top: 2rem;
 }
 
-.column-tasks{
+.column-tasks {
   background-color: rgb(255, 255, 255);
   height: 70vh;
   width: 20%;
   border-radius: 2rem;
   -webkit-box-shadow: 0px 0px 38px -1px rgba(103, 14, 130, 0.58);
--moz-box-shadow: 0px 0px 38px -1px rgba(0, 0, 0, 0.58);
-box-shadow: 0px 0px 38px -1px rgba(80, 14, 93, 0.58);
-overflow-y:scroll;
+  -moz-box-shadow: 0px 0px 38px -1px rgba(0, 0, 0, 0.58);
+  box-shadow: 0px 0px 38px -1px rgba(80, 14, 93, 0.58);
+  overflow-y: scroll;
 
 }
-.column-tasks h3{
+
+.column-tasks h3 {
   font-size: 1.5rem;
   text-align: center;
   padding-top: 0.3rem;
   border-bottom: 1px solid grey;
-  
+
 }
 
-.column-tasks::-webkit-scrollbar{
+.column-tasks::-webkit-scrollbar {
   display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .container-task-manager {
+    flex-direction: column;
+  }
+
+  .column-tasks {
+    width: 100%;
+  }
+  .search-field-taskM {
+    flex-direction: column;
+    height: 6rem;
+    padding: 0.3rem;
+    background-color: var(--light-purp);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.INPUT-TASKmANAGER-SEARCH {
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  margin-left: 2rem;
+  margin-right: 1rem;
+}
 }

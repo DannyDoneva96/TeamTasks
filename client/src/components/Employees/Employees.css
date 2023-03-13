@@ -131,3 +131,18 @@
 .td-btn{
     display: flex;
 }
+
+@media screen and (max-width: 600px){
+    .header-container {
+        height: 4rem;
+        display: flex;
+        justify-content: unset;
+        margin: 1rem 3rem;
+        flex-direction: column;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        overflow-x: scroll;
+    }
+}

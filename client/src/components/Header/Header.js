@@ -6,7 +6,7 @@ const Header = () => {
     const user = true;
   return (
     <div className='header-container'>
-        <img src={require('../../assets/images/Task Manager.png')} alt="" />
+          <Link to="/"> <img src={require('../../assets/images/Task Manager.png')} alt="" /></Link>
        
          <ul className='header-options'> 
             <Link to="/taskManager" ><li> Tasks</li></Link>
