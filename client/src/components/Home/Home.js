@@ -18,8 +18,8 @@ const Home = () => {
                     </Link>                    <div className="des">
                         <h1 className="main-h">What is task manager?</h1>
                         <p className="main-p">A task manager is an application that helps our company organize our work and stay focused. It helps us stay on top of our work, tackle multiple tasks, and stay organized. You can use a task manager to keep your work organized day in and day out.<div className='container-btn'>
-                            <button className="get-started-btn">GET STARTED</button></div> </p></div>
-
+                        <Link to="/taskManager">  <button className="get-started-btn">GET STARTED</button>  </Link> </div> </p></div>
+                       
                 </div>
                 <div className="home-col-1">
                     <div className="des">

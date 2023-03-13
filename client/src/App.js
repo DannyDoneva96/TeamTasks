@@ -8,11 +8,13 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Employees from './components/Employees/Employees';
 import TaskManager from './components/TaskManager/TaskManager'
+import ErrorPage from './ErrorPage/ErrorPage';
 function App() {
   return (
     <div className="App">  
      <Header/> 
         <Routes>
+        <Route path="*" element={<ErrorPage />} />
           <Route  path="/" element={<Home />} />
           <Route path="/employees" element={<Employees />} />
           <Route path="/taskManager" element={<TaskManager />} />
